@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% for user in users %}
+        <div class="content-section">
+            <div class="media" style="display:flex; align-items: center; flex-wrap:wrap;">
+                <img class="rounded-circle account-img" src="{{ user.profilo.image.url }}">
+                <div class="media-body">
+                    <h3 class="account-heading m-2">{{ user.username }}</h3>
+                    {% if user.last_login != none %}
+                        <p class="text-secondary m-2">Ultima volta online: {{ user.last_login }}</p>
+                    {% endif %}
+                    <div>
+                        <a href="{% url 'user-post' user.username %}" class="btn btn-secondary m-2">Post di {{ user.username }}</a>
+                        <a href="{% url 'profile-guest' user.username %}" class="btn btn-secondary m-2">Profilo di {{ user.username }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

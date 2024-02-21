@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <div class="media" style="display:flex; align-items: center; flex-wrap:wrap; border-bottom: 1px solid #e3e3e3; margin-bottom: 5px">
+            <img class="rounded-circle account-img" src="{{ utente.profilo.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ utente }}</h2>
+                <p class="text-secondary mb-0">Post totali: {{ count }}</p>
+                {% if utente.last_login != none %}
+                    <p class="text-secondary">Ultima volta online: {{ utente.last_login }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <h3>Informazioni</h3>
+            <p class="text-secondary"><b>Nome:</b> {{ utente.first_name }}</p>
+            <p class="text-secondary"><b>Cognome:</b>  {{ utente.last_name }}</p>
+            <p class="text-secondary"><b>Email:</b>  {{ utente.email }}</p>
+        </div>
+        <div style="display:flex; align-items: center; justify-content: center;">
+            <a href="{% url 'user-post' utente.username %}" class="btn btn-secondary">Vai ai post pubblicati da {{ utente.username }}</a>
+        </div>
+    </div>
+
+{% endblock content %}

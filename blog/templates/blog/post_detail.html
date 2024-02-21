@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div style="display:flex; flex-wrap: wrap; align-items: center;" class="article-metadata pb-2">
+            <img class="rounded-circle article-img"src="{{ object.autore.profilo.image.url }}" alt="">
+            <div style = "display:flex; flex-direction: column; flex-wrap: wrap;">
+                <a class="mr-2" href="{% url 'user-post' object.autore.username %}">{{ object.autore }}</a>
+                <small class="text-muted">{{ object.data|date:"D d F, Y" }}</small>
+                {% if object.autore == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Modifica</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Elimina</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="media-body">
+            <h2 class="article-title">{{ object.titolo }}</h2>
+            <p class="article-content">{{ object.contenuto }}</p>
+        </div>
+    </article>
+{% endblock content %}

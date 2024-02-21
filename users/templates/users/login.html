@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <script>
+            window.location = "/";
+        </script>
+    {% else %}
+        <div class="content-section" user="{{ user.is_authenticated }}" url="{% url 'blog-home' %}">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom bm-4">ENTRA</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info mt-2 mb-2" type="submit">Entra</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">Ancora non sei registrato? <a class="ml-2" href="{% url 'register' %}">Registrati</a></small>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

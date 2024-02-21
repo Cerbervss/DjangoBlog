@@ -4,10 +4,13 @@ DjangoBlog è un progetto sviluppato con il framework Django. In questo progetto
 
 ## Installazione
 
-Usa il package manager di python [pip](https://pip.pypa.io/en/stable/) per installare django.
+Usa il package manager di python [pip](https://pip.pypa.io/en/stable/) per installare django e i relativi pacchetti.
 
 ```bash
 pip install django
+pip install django-crispy-forms
+pip install crispy-bootstrap4
+pip install pillow
 ```
 
 ## Uso
